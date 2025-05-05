@@ -1,8 +1,6 @@
 let products=require("../db/models/product");
 let mongoose=require("mongoose");
 
-let ObjectId = mongoose.Types.ObjectId;
-
 let getAllProducts=async(req,res)=>{
     let query={};
     let category=req.query.category;
@@ -60,7 +58,7 @@ let updateProduct=async(req,res)=>{
 
 let deleteProduct=async(req,res)=>{
     let productId = req.params.id;
-    await products.deleteOne({_id:new ObjectId(productId)});
+    await products.deleteOne({productId});
     res.status(200).json({success:true,message:"Product Deletd successfully"});
 }
 
